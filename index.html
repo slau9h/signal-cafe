@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Кофейня «Сигнал»</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f2f3f4;
+    --panel: #ffffff;
+    --line: #d5d8db;
+    --ink: #1f2226;
+    --muted: #676d74;
+    --neon: #00e5ff;
+    --neon-soft: rgba(255, 45, 143, 0.45);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1d1f22;
+      --panel: #26292d;
+      --line: #3a3e43;
+      --ink: #eceef0;
+      --muted: #a2a8af;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 17px;
+    line-height: 1.55;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--neon); outline-offset: 3px; }
+
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+  /* Hero: the shop window with a neon sign */
+  .hero { padding: 40px 0 24px; }
+  .window {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+    text-align: center;
+  }
+  .sign {
+    font-family: "Unbounded", "Arial Black", sans-serif;
+    font-weight: 700;
+    font-size: clamp(44px, 12vw, 104px);
+    line-height: 1;
+    margin: 0;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--neon);
+    text-shadow: 0 0 12px var(--neon-soft), 0 0 36px var(--neon-soft);
+    animation: flicker 1.6s ease-out 1 both;
+  }
+  @keyframes flicker {
+    0%   { opacity: 0.15; }
+    10%  { opacity: 1; }
+    16%  { opacity: 0.3; }
+    28%  { opacity: 1; }
+    34%  { opacity: 0.6; }
+    100% { opacity: 1; }
+  }
+  .tagline {
+    margin: 28px 0 0;
+    max-width: 34ch;
+    color: var(--muted);
+  }
+  .cta {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 14px 26px;
+    background: var(--ink);
+    color: var(--bg);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 4px;
+    transition: background 0.15s, color 0.15s;
+  }
+  .cta:hover { background: var(--neon); color: #fff; }
+
+  section { padding: 48px 0 8px; }
+  h2 {
+    font-family: "Unbounded", "Arial Black", sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    margin: 0 0 24px;
+  }
+
+  /* Menu as a ruled list */
+  .menu { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .menu li { padding: 18px 0; border-bottom: 1px solid var(--line); }
+  .row { display: flex; align-items: baseline; gap: 12px; }
+  .name { font-weight: 600; }
+  .size { color: var(--muted); font-size: 15px; white-space: nowrap; }
+  .fill { flex: 1; border-bottom: 1px dotted var(--line); transform: translateY(-4px); }
+  .price { font-weight: 600; white-space: nowrap; }
+  .desc { margin: 4px 0 0; color: var(--muted); font-size: 15px; max-width: 60ch; }
+
+  /* Info */
+  .info { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .info h3 { margin: 0 0 8px; font-size: 17px; }
+  .info p { margin: 0; color: var(--muted); }
+  .hours { width: 100%; border-collapse: collapse; }
+  .hours td { padding: 4px 0; color: var(--muted); }
+  .hours td:last-child { text-align: right; color: var(--ink); }
+  .note { margin: 10px 0 0; color: var(--muted); font-size: 15px; }
+
+  footer {
+    margin-top: 56px;
+    padding: 28px 0 40px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  @media (max-width: 600px) {
+    .info { grid-template-columns: 1fr; gap: 28px; }
+    .row { flex-wrap: wrap; }
+    .fill { display: none; }
+    .size { order: 3; width: 100%; }
+    .price { margin-left: auto; }
+    .name { flex: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sign { animation: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="window">
+      <h1 class="sign">Сигнал</h1>
+      <p class="tagline">Кофейня с чистым вкусом зерна, авторскими миксами и розетками у каждого стола.</p>
+      <!-- Замените your_username на ваш ник в Telegram -->
+      <a class="cta" href="https://t.me/sIaugh">Написать в Telegram</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="menu">
+    <h2>Меню</h2>
+    <ul class="menu">
+      <li>
+        <div class="row"><span class="name">Эспрессо / Доппио</span><span class="size">30 / 60 мл</span><span class="fill"></span><span class="price">200 ₽</span></div>
+        <p class="desc">Классика сбалансированной обжарки с нотками тёмного шоколада и цитрусовой кислинкой.</p>
+      </li>
+      <li>
+        <div class="row"><span class="name">Капучино «Холст»</span><span class="size">350 мл</span><span class="fill"></span><span class="price">330 ₽</span></div>
+        <p class="desc">Фирменный напиток на двойном ристретто с шелковистой микропенкой и лёгким ванильным послевкусием.</p>
+      </li>
+      <li>
+        <div class="row"><span class="name">Раф «Солёная карамель и пекан»</span><span class="size">400 мл</span><span class="fill"></span><span class="price">390 ₽</span></div>
+        <p class="desc">Плотный согревающий микс на сливках с натуральной карамелью и ореховым сиропом.</p>
+      </li>
+      <li>
+        <div class="row"><span class="name">Бамбл-кофе «Цитрусовый буст»</span><span class="size">400 мл</span><span class="fill"></span><span class="price">360 ₽</span></div>
+        <p class="desc">Освежающий слоистый коктейль: двойной эспрессо, свежевыжатый апельсиновый сок и карамельный сироп.</p>
+      </li>
+      <li>
+        <div class="row"><span class="name">Матча-латте на кокосовом</span><span class="size">350 мл</span><span class="fill"></span><span class="price">370 ₽</span></div>
+        <p class="desc">Японская церемониальная матча с нежным растительным молоком и лёгкой естественной сладостью.</p>
+      </li>
+      <li>
+        <div class="row"><span class="name">Круассан с миндальным крем-пралине</span><span class="size">1 шт.</span><span class="fill"></span><span class="price">260 ₽</span></div>
+        <p class="desc">Свежая хрустящая выпечка с начинкой из обжаренного миндаля и заварного крема.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="visit">
+    <h2>Как нас найти</h2>
+    <div class="info">
+      <div>
+        <h3>Адрес</h3>
+        <p>ул. Ленинградская, 45<br>Центр города, рядом с прогулочной зоной.</p>
+        <p class="note">Белый и серый интерьер, неоновая подсветка, панорамные окна в пол.</p>
+      </div>
+      <div>
+        <h3>Часы работы</h3>
+        <table class="hours">
+          <tr><td>Пн–Пт</td><td>07:30 – 22:00</td></tr>
+          <tr><td>Сб–Вс</td><td>09:00 – 23:00</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">Кофейня «Сигнал», ул. Ленинградская, 45</div>
+</footer>
+
+</body>
+</html>
